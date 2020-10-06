@@ -39,6 +39,18 @@
       <pose>0 0 0 0 0 0</pose>
     </sensor>
   </gazebo>
+
+<!-- Ground Truth Pose -->
+  <gazebo>
+      <plugin name="gazebo_ros_p3d" filename="libgazebo_ros_p3d.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>30.0</updateRate>
+      <bodyName>base_footprint</bodyName>
+      <topicName>/diffbot/base_controller/ground_truth_pose</topicName>
+      <gaussianNoise>0.0</gaussianNoise>
+      <frameName>map</frameName>
+      </plugin>
+  </gazebo>  
  
 </robot>
 
