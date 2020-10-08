@@ -12,14 +12,14 @@
       <wheelDiameter>${wheel_radius * 2}</wheelDiameter>
       <torque>20</torque>
       <commandTopic>/diffbot/base_controller/cmd_vel</commandTopic>
-      <odometryTopic>/diffbot/base_controller/odom</odometryTopic>
+      <odometryTopic>diffbot_odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
       <robotBaseFrame>base_footprint</robotBaseFrame>
     </plugin>
   </gazebo>
 
 <!--IMU plugin-->
-  <gazebo reference="base_footprint">
+  <gazebo reference="imu_link">
     <gravity>true</gravity>
     <sensor name="imu_sensor" type="imu">
       <always_on>true</always_on>
@@ -27,7 +27,7 @@
       <visualize>true</visualize>
       <topic>__default_topic__</topic>
       <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
-        <topicName>/diffbot/base_controller/imu</topicName>
+        <topicName>diffbot_imu</topicName>
         <bodyName>imu_link</bodyName>
         <updateRateHZ>10.0</updateRateHZ>
         <gaussianNoise>0.0</gaussianNoise>
@@ -46,7 +46,7 @@
       <alwaysOn>true</alwaysOn>
       <updateRate>30.0</updateRate>
       <bodyName>base_footprint</bodyName>
-      <topicName>/diffbot/base_controller/ground_truth_pose</topicName>
+      <topicName>diffbot_ground_truth</topicName>
       <gaussianNoise>0.0</gaussianNoise>
       <frameName>map</frameName>
       </plugin>
