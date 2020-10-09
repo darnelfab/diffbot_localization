@@ -1,0 +1,15 @@
+<launch>
+
+	<arg name="record_diffbot_imu" default="true" />
+	<arg name="record_diffbot_odom" default="true" />
+	<arg name="record_diffbot_ground_truth" default="true" />
+
+	<arg name="diffbot_description" default="diffbot_description" />
+
+	<node pkg="rosbag" type="record" name="rosbag_diffbot_imu" args="record -o /tmp/diffbot_imu" if="$(arg record_diffbot_imu)" />
+
+	<node pkg="rosbag" type="record" name="rosbag_diffbot_odm" args="record -o /tmp/diffbot_odom" if="$(arg record_diffbot_odom)" />
+
+	<node pkg="rosbag" type="record" name="rosbag_diffbot_ground_truth" args="record -o /tmp/diffbot_ground_truth" if="$(arg record_diffbot_odom)"/>
+	
+</launch>
