@@ -9,13 +9,16 @@
   <arg name="debug" default="false"/>
   
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find diffbot)/src/map/world/diffbot.world"/>
-    <!--arg name="world_name" value="$(find diffbot)/src/map/world/turtlebot_playground.world"/-->
-    <arg name="paused" value="$(arg paused)"/>
-    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
-    <arg name="gui" value="$(arg gui)"/>
-    <arg name="headless" value="$(arg headless)"/>
-    <arg name="debug" value="$(arg debug)"/>
+    <!--arg name="world_name" value="$(find diffbot)/src/map/worlds/diffbot.world"/-->
+    <arg name="world_name" value="$(find diffbot)/src/map/worlds/corridor.world"/>
+    <!--arg name="world_name" value="$(find diffbot)/src/map/worlds/turtlebot_playground.world"/-->
+    <!--arg name="world_name" value="$(find diffbot)/src/map/worlds/playground.world"/-->
+    <arg name="paused" 		value="$(arg paused)"/>
+    <arg name="use_sim_time" 	value="$(arg use_sim_time)"/>
+    <arg name="gui"		value="$(arg gui)"/>
+    <arg name="headless"	value="$(arg headless)"/>
+    <arg name="debug"		value="$(arg debug)"/>
+    
   </include>
   
   <param name="robot_description" command="$(find xacro)/xacro.py '$(find diffbot)/src/diffbot_description/src/urdf/diffbot.xacro'"/>
@@ -23,3 +26,5 @@
   <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model diffbot" />
 
 </launch>
+
+
